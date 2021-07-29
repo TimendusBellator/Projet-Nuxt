@@ -18,12 +18,28 @@ export default {
       }
     }
   },
-  asyncData({$axios}) {
+  /*asyncData({$axios}) {
     return $axios.get(`/api/articles`)
     .then(res => {
       return { articles: res.data }
     })
+  },*/
+  async asyncData ({ $axios }) {
+    const [tasksRes, articlesRes] = await Promise.all([ 
+      $axios.get(`/api/tasks`),
+      $axios.get(`/api/articles`)
+    ])
+    return {
+      //tasks: tasksRes.data,
+      articles: articlesRes.data
+    }
   },
+  /*async asyncData({$axios}) {
+    // We can use async/await ES6 feature
+    const tasksRes = await $axios.get(`/api/tasks`);
+    const articlesRes = await $axios.get(`/api/articles`);
+    return { articles: articlesRes.data};//, tasks: tasksRes.data };
+  },*/
   head() {
     return {
       title: 'Articles',

@@ -8,6 +8,7 @@
         #navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.me-auto.mb-2.mb-lg-0
             li.nav-item
-              nuxt-link(to="/new" class="nav-link") Create Article
+              nuxt-link(to="/newArticle" class="nav-link") Create Article
+              nuxt-link(to="/newTask" class="nav-link") Create Task
     Nuxt
 </template>
